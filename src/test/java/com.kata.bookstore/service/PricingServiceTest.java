@@ -1,0 +1,21 @@
+package com.kata.bookstore.service;
+
+import com.kata.bookstore.book.Book;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+class PricingServiceTest {
+
+    @Test
+    void shouldReturn50ForSingleBook() {
+
+        PricingService service = new PricingService();
+
+        double price = service.calculate(List.of(Book.CLEAN_CODE));
+
+        assertThat(price).isEqualTo(50.0);
+    }
+}
