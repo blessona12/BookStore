@@ -17,7 +17,9 @@ public class PricingService {
         double total = books.size() * AppConstants.BASE_BOOK_PRICE;
 
         if (uniqueCount == 2) {
-            return total * 0.95; // 5% discount
+            return total * 0.95;
+        } else if (uniqueCount == 3) {
+            return total * 0.90;
         }
 
         return total;
