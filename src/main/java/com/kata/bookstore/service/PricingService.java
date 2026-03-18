@@ -20,6 +20,8 @@ public class PricingService {
             return total * 0.95;
         } else if (uniqueCount == 3) {
             return total * 0.90;
+        } else if (uniqueCount == 4) {
+            return total * 0.80;
         }
 
         return total;
