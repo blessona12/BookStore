@@ -3,8 +3,16 @@ package com.kata.bookstore.service;
 import com.kata.bookstore.book.Book;
 import com.kata.bookstore.constants.AppConstants;
 import java.util.List;
+import java.util.Map;
 
 public class PricingService {
+
+    private static final Map<Integer, Double> DISCOUNT_MAP = Map.of(
+            1, 1.0,
+            2, 0.95,
+            3, 0.90,
+            4, 0.80
+    );
 
     public double calculate(List<Book> books) {
 
@@ -16,16 +24,8 @@ public class PricingService {
 
         double total = books.size() * AppConstants.BASE_BOOK_PRICE;
 
-        if (uniqueCount == 2) {
-            return total * 0.95;
-        } else if (uniqueCount == 3) {
-            return total * 0.90;
-        } else if (uniqueCount == 4) {
-            return total * 0.80;
-        } else if (uniqueCount == 5) {
-            return total * 0.75;
-        }
+        double multiplier = DISCOUNT_MAP.getOrDefault(uniqueCount, 1.0);
 
-        return total;
+        return total * multiplier;
     }
 }
