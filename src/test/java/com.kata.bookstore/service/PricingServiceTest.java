@@ -18,4 +18,16 @@ class PricingServiceTest {
 
         assertThat(price).isEqualTo(50.0);
     }
+
+    @Test
+    void shouldApply5PercentDiscountForTwoDifferentBooks() {
+
+        PricingService service = new PricingService();
+
+        double price = service.calculate(
+                List.of(Book.CLEAN_CODE, Book.THE_CLEAN_CODER)
+        );
+
+        assertThat(price).isEqualTo(95.0);
+    }
 }
