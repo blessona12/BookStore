@@ -81,4 +81,22 @@ class PricingServiceTest {
 
         assertThat(price).isEqualTo(187.5);
     }
+
+    @Test
+    void shouldCalculateOptimalPriceForComplexBasket() {
+
+        PricingService service = new PricingService();
+
+        double price = service.calculate(
+                List.of(
+                        Book.CLEAN_CODE, Book.CLEAN_CODE,
+                        Book.THE_CLEAN_CODER, Book.THE_CLEAN_CODER,
+                        Book.CLEAN_ARCHITECTURE, Book.CLEAN_ARCHITECTURE,
+                        Book.TDD_BY_EXAMPLE,
+                        Book.LEGACY_CODE
+                )
+        );
+
+        assertThat(price).isEqualTo(320.0);
+    }
 }
